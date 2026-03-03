@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>楊道昀｜沉夢體驗遊戲工作室</title>
+    <!-- 載入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 基礎設定：深色專業背景，無光暈 */
+        body {
+            background-color: #111827; /* 深灰/藏青背景 */
+            color: #F3F4F6; /* 淺灰白字體 */
+            font-family: 'Helvetica Neue', Arial, 'LiHei Pro', '微軟正黑體', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 滾動浮現動畫 */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 扁平化深色卡片 */
+        .flat-card {
+            background-color: #1F2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+        }
+
+        /* 隱藏 details 預設的箭頭 */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        /* 使用純文字的 ＋ 和 － 作為展開收合提示，不使用 ICON */
+        .accordion-indicator::after {
+            content: '＋';
+            font-weight: bold;
+        }
+        details[open] .accordion-indicator::after {
+            content: '－';
+        }
+        
+        /* 點開後改變提示文字 */
+        details[open] .expand-text::before {
+            content: '收起說明 ';
+        }
+        details:not([open]) .expand-text::before {
+            content: '點擊展開說明 ';
+        }
+
+        /* 按鈕點擊動畫 */
+        .btn-active:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="text-lg pb-8"> <!-- 基礎字體保持放大 (text-lg) -->
+
+    <!-- 主視覺與個人簡介 -->
+    <header class="pt-16 pb-12 px-6 flex flex-col items-center text-center fade-in-up">
+        
+        <!-- 📷 替換個人照片區域 📷 -->
+        <div class="w-36 h-36 mb-6 rounded-full overflow-hidden border-2 border-gray-600 bg-gray-800 flex items-center justify-center">
+            <img 
+                src="https://cdn.jsdelivr.net/gh/onegameonedestiny/picture@main/love/%E5%A4%A7%E9%A0%AD-01.png" 
+                alt="楊道昀 照片" 
+                class="w-full h-full object-cover"
+            >
+        </div>
+        
+        <h1 class="text-4xl font-bold tracking-wider mb-2 text-white">楊道昀</h1>
+        <h2 class="text-gray-400 text-lg tracking-widest mb-8 font-bold">沉夢體驗遊戲工作室 遊戲設計師</h2>
+        
+        <blockquote class="text-xl italic text-gray-300 border-l-4 border-gray-500 pl-4 py-1 text-left">
+            「做一場沉浸的夢，<br>夢醒後改變你的人生」
+        </blockquote>
+    </header>
+
+    <!-- 關於我區塊 -->
+    <section class="px-6 py-6 fade-in-up">
+        <div class="flex items-center mb-6">
+            <div class="w-1 h-7 bg-blue-500 mr-3"></div>
+            <h3 class="text-2xl font-bold tracking-wider text-white">關於｜Profile</h3>
+        </div>
+        
+        <div class="flat-card p-6 mb-6">
+            <p class="text-blue-400 font-bold text-xl mb-5 leading-relaxed tracking-wide">
+                • 超過八年實境遊戲經驗<br>
+                • 50款以上遊戲製作<br>
+                • 豐富公部門合作經歷
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-5 text-lg">
+                專注於「沉浸式體驗」與「實境遊戲」設計。擁有<span class="text-white font-bold border-b border-gray-500 pb-0.5 mx-1">國小教師</span>與<span class="text-white font-bold border-b border-gray-500 pb-0.5 mx-1">領隊導遊</span>雙證照的獨特背景，更懂得如何「引導」人群。
+            </p>
+            <p class="text-gray-300 leading-relaxed text-lg">
+                擅長將生硬、無趣的資訊，巧妙包裝成引人入勝的遊戲機制；同時，透過精準的流程設計，讓玩家在遊玩過程中自然產生強烈的團隊凝聚力。具備從 8 人的精緻小型體驗，到高達 200 人大型活動的完善設計與執行經驗。
+            </p>
+        </div>
+    </section>
+
+    <!-- 業務內容區塊 (直接展開設計) -->
+    <section class="px-6 py-6 fade-in-up">
+        <div class="flex items-center mb-6">
+            <div class="w-1 h-7 bg-green-500 mr-3"></div>
+            <h3 class="text-2xl font-bold tracking-wider text-white">業務內容｜Services</h3>
+        </div>
+        
+        <p class="text-gray-400 mb-6 text-base tracking-wide">提供以下五大領域的遊戲設計服務：</p>
+
+        <div class="space-y-4">
+            <!-- 服務 1 -->
+            <div class="flat-card p-5">
+                <h4 class="text-xl font-bold text-white tracking-wide">活動型遊戲</h4>
+                <p class="text-green-400 font-bold mt-1 mb-3 text-base">活絡氣氛、凝聚向心力</p>
+                <p class="text-lg leading-relaxed text-gray-300">
+                    專為公司 Team Building（團隊建立）、春酒尾牙、聯誼破冰等活動量身打造，讓參與者在歡笑中拉近距離。
+                </p>
+            </div>
+
+            <!-- 服務 2 -->
+            <div class="flat-card p-5">
+                <h4 class="text-xl font-bold text-white tracking-wide">宣傳型遊戲</h4>
+                <p class="text-blue-400 font-bold mt-1 mb-3 text-base">創造話題、深化品牌印象</p>
+                <p class="text-lg leading-relaxed text-gray-300">
+                    透過遊戲傳遞公司理念、節慶活動宣傳，或是將線上遊戲轉化為線下實體活動，讓行銷變得更好玩。
+                </p>
+            </div>
+
+            <!-- 服務 3 -->
+            <div class="flat-card p-5">
+                <h4 class="text-xl font-bold text-white tracking-wide">教育型遊戲</h4>
+                <p class="text-yellow-400 font-bold mt-1 mb-3 text-base">寓教於樂、無痛吸收新知</p>
+                <p class="text-lg leading-relaxed text-gray-300">
+                    適用於企業員工訓練、博物館深度導覽、社會議題宣導與 NGO 理念推廣，讓學習不再枯燥乏味。
+                </p>
+            </div>
+
+            <!-- 服務 4 -->
+            <div class="flat-card p-5">
+                <h4 class="text-xl font-bold text-white tracking-wide">營利型遊戲</h4>
+                <p class="text-pink-400 font-bold mt-1 mb-3 text-base">結合 IP、創造新商業模式</p>
+                <p class="text-lg leading-relaxed text-gray-300">
+                    結合特定場地、商圈或既有 IP，開發專屬的線上或線下實境遊戲，打造具有獲利能力的商業專案。
+                </p>
+            </div>
+
+            <!-- 服務 5 -->
+            <div class="flat-card p-5">
+                <h4 class="text-xl font-bold text-white tracking-wide">沉浸體驗設計</h4>
+                <p class="text-purple-400 font-bold mt-1 mb-3 text-base">五感全開、極致互動</p>
+                <p class="text-lg leading-relaxed text-gray-300">
+                    結合專業的聲光效果與真人演員演出，打造打破第四面牆的深刻互動體驗。（例如：結合戲劇演出的微醺品酒會）
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 什麼是實境遊戲 (明顯可點開的區塊) -->
+    <section class="px-6 py-8 fade-in-up">
+        <!-- 外框加上特別顏色，讓它看起來像個大型按鈕 -->
+        <details class="flat-card group overflow-hidden border-2 border-purple-500/50 bg-gray-800">
+            <summary class="p-6 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-700 transition-colors text-center">
+                <h3 class="text-2xl font-bold tracking-wider text-white mb-3">什麼是實境遊戲？</h3>
+                <!-- 明顯的點擊提示標籤 -->
+                <div class="text-purple-300 font-bold text-sm tracking-widest bg-purple-900/60 px-5 py-2 rounded-full border border-purple-500/50">
+                    <span class="expand-text"></span><span class="accordion-indicator ml-1"></span>
+                </div>
+            </summary>
+            
+            <div class="p-6 border-t border-purple-500/30 bg-gray-900 space-y-6 text-left">
+                <!-- 科普 1 -->
+                <div>
+                    <h4 class="text-xl font-bold text-white tracking-wide mb-2">戶外實境解謎遊戲</h4>
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        利用既有的場地與現實造景作為遊戲的一部分。玩家通常會搭配手機網頁或 APP，專注於探索現實環境中的蛛絲馬跡。
+                    </p>
+                </div>
+
+                <!-- 科普 2 -->
+                <div>
+                    <h4 class="text-xl font-bold text-white tracking-wide mb-2">密室逃脫</h4>
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        將一個空白的實體空間進行重新裝潢與機關設計，把玩家關進一個充滿謎題的異世界。
+                    </p>
+                </div>
+
+                <!-- 科普 3 -->
+                <div>
+                    <h4 class="text-xl font-bold text-white tracking-wide mb-2">沉浸式劇場</h4>
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        最早源自於百老匯的戲劇體驗方式，如今已在台灣造成流行，屬於高單價的高貴體驗。強調極致的氣氛營造，結合聲光效果與演員的近距離演出，讓玩家不再只是觀眾，而是親身走入劇情之中。
+                    </p>
+                </div>
+            </div>
+        </details>
+    </section>
+
+    <!-- 放置於最下方的 LINE 聯絡按鈕 -->
+    <div class="px-6 py-6 flex justify-center fade-in-up">
+        <a 
+            href="https://line.me/ti/p/d5hUmI6iPG" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-active w-full max-w-md bg-[#06C755] hover:bg-[#05b34c] text-white text-center font-bold text-xl py-4 px-4 rounded-lg transition-colors"
+        >
+            與我聯繫 (LINE)
+        </a>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer class="text-center pb-10 pt-4 text-gray-500 text-sm tracking-widest">
+        <p>© 楊道昀 沉夢體驗遊戲工作室</p>
+    </footer>
+
+    <!-- 輕量級滾動動畫腳本 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = document.querySelectorAll('.fade-in-up');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px 0px -20px 0px' 
+            });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
