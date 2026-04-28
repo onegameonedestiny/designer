@@ -132,6 +132,23 @@
             background-color: rgba(30, 15, 60, 0.55);
         }
 
+        /* 🌟 代表作專屬黃金發光卡片 🌟 */
+        .featured-card {
+            background-color: rgba(30, 20, 10, 0.5); /* 帶有琥珀色的深底色 */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 191, 36, 0.4); /* 琥珀金邊框 */
+            border-radius: 16px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(251, 191, 36, 0.2), 0 0 30px rgba(245, 158, 11, 0.15);
+            transition: all 0.5s ease;
+        }
+        .featured-card:hover {
+            border-color: rgba(251, 191, 36, 0.8);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 158, 11, 0.3);
+            transform: translateY(-4px);
+            background-color: rgba(40, 25, 10, 0.6);
+        }
+
         /* 作品集分類按鈕樣式 */
         .filter-btn {
             transition: all 0.3s ease;
@@ -214,7 +231,7 @@
                         • 豐富公部門合作經歷
                     </p>
                     <p class="text-gray-200 leading-relaxed mb-5 text-lg drop-shadow-md">
-                        專注於「沉浸式體驗」與「實境遊戲」設計。擁有國小教師與領隊導圓雙證照的獨特背景，更懂得如何結合教育與史地。
+                        專注於「沉浸式體驗」與「實境遊戲」設計。擁有國小教師與領隊導遊雙證照的獨特背景，更懂得如何結合教育與史地。
                     </p>
                     <p class="text-gray-200 leading-relaxed text-lg drop-shadow-md">
                         擅長將生硬的資訊或議題，巧妙包裝成引人入勝的遊戲機制；同時，透過精準的流程設計，讓玩家在遊玩過程中自然產生強烈的團隊凝聚力。具備從 8 人的精緻小型體驗，到高達百人大型活動的完善設計與執行經驗。
@@ -335,6 +352,57 @@
                     <span class="px-3 py-1.5 md:px-5 md:py-2 bg-black/40 border border-pink-500/30 rounded-md md:rounded-lg text-pink-100 text-sm md:text-base font-bold tracking-wider md:tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">戀與製作人</span>
                     <span class="px-3 py-1.5 md:px-5 md:py-2 bg-black/40 border border-pink-500/30 rounded-md md:rounded-lg text-pink-100 text-sm md:text-base font-bold tracking-wider md:tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">Niantic (INGRESS)</span>
                     <span class="px-3 py-1.5 md:px-5 md:py-2 bg-black/40 border border-pink-500/30 rounded-md md:rounded-lg text-pink-100 text-sm md:text-base font-bold tracking-wider md:tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">木棉花 (伊藤潤二)</span>
+                </div>
+            </section>
+
+            <!-- 🌟 全新：年度代表作 (Featured Work) 🌟 -->
+            <section class="px-6 py-10 fade-in-up">
+                <div class="flex items-center mb-8">
+                    <div class="w-1.5 h-7 bg-gradient-to-b from-amber-300 to-yellow-600 mr-3 drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]"></div>
+                    <h3 class="text-2xl font-black tracking-widest text-white drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]">年度代表作｜Featured</h3>
+                </div>
+
+                <!-- 代表作專屬發光卡片：電腦版左右排，手機版上下排 -->
+                <div class="featured-card flex flex-col md:flex-row overflow-hidden group">
+                    <!-- 左側/上方：主視覺圖片 -->
+                    <div class="w-full md:w-5/12 h-64 md:h-auto overflow-hidden relative border-b md:border-b-0 md:border-r border-amber-500/30">
+                        <div class="absolute inset-0 bg-amber-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img 
+                            src="https://popworld.cc/gamelanding/images/grand_hotel/lambs/lambs_fb.png" 
+                            alt="圓山月夜 羊群的失控" 
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        >
+                    </div>
+                    
+                    <!-- 右側/下方：榮耀標籤與介紹文案 -->
+                    <div class="w-full md:w-7/12 p-6 md:p-8 flex flex-col justify-center relative">
+                        <!-- 背景點綴光暈 -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl"></div>
+                        
+                        <h4 class="text-3xl md:text-4xl font-black text-amber-50 tracking-widest mb-4 drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]">圓山月夜 - 羊群的失控</h4>
+                        
+                        <!-- 亮點標籤列 -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-amber-900/60 border border-amber-400/80 rounded text-amber-200 text-sm font-bold tracking-wider flex items-center shadow-[0_0_10px_rgba(245,158,11,0.4)]">
+                                🏆 逃脫吧金逃獎 第一名
+                            </span>
+                            <span class="px-3 py-1 bg-amber-900/40 border border-amber-500/40 rounded text-amber-100 text-sm font-bold tracking-wider">
+                                👥 破 2,500 人體驗
+                            </span>
+                            <span class="px-3 py-1 bg-amber-900/40 border border-amber-500/40 rounded text-amber-100 text-sm font-bold tracking-wider">
+                                🏨 頂級住宿實境解謎
+                            </span>
+                        </div>
+                        
+                        <!-- 文案介紹 -->
+                        <p class="text-amber-50/90 leading-relaxed text-lg mb-4 text-justify font-medium">
+                            <strong class="text-amber-300">「單套體驗逼近五千元，卻仍創下每月熱銷 20 組的驚人佳績！」</strong><br>
+                            榮獲知名密室評鑑平台「逃脫吧」最高殊榮——<span class="text-white border-b border-amber-400">年度最佳實境解謎遊戲創意創新第一名</span>。
+                        </p>
+                        <p class="text-gray-300 leading-relaxed text-base text-justify">
+                            本作品為全台首創的「五星級飯店過夜解謎」，將圓山大飯店深厚的歷史底蘊與時下最流行的 ARG（另類實境遊戲）機制完美融合。玩家從踏入大廳的那一刻起，便化身為懸疑事件的調查者。不僅需要在房內尋找蛛絲馬跡，更需善用真實的飯店設施與實體道具，展開一場打破現實與虛構界線的深度沉浸之旅。
+                        </p>
+                    </div>
                 </div>
             </section>
 
