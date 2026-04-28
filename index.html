@@ -6,31 +6,141 @@
     <title>楊道昀｜沉夢體驗遊戲工作室</title>
     <!-- 載入 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ========================================== -->
+    <!-- 📝 這裡可以隨時新增或修改您的「歷年作品」資料 📝 -->
+    <!-- ========================================== -->
+    <script>
+        const portfolioData = [
+            {name: "九葬喵夢遊仙境", desc: "結合知名原創 IP「九藏喵窩」，於大型動漫展現場打造的超高人氣實體密室逃脫。", category: "密室逃脫"},
+            {name: "獵殺歌不林", desc: "針對動漫展客群設計，具備強烈RPG冒險風格與互動元素的展場限定密室逃脫。", category: "密室逃脫"},
+            {name: "楓之谷末日封印", desc: "受知名線上遊戲原廠委託，將經典遊戲《新楓之谷》世界觀完美實體化的大型企劃。", category: "密室逃脫"},
+            {name: "噶瑪蘭公主", desc: "常駐於宜蘭傳統藝術中心，巧妙結合在地噶瑪蘭傳說與精緻機關的常態型密室逃脫。", category: "密室逃脫"},
+            {name: "喵境夢遊", desc: "位於台北西門町商圈，主打奇幻童話風格與趣味機關互動的熱門密室主題。", category: "密室逃脫"},
+            {name: "搶救母咪大作戰", desc: "與超人氣手遊《戰鬥女子學園》跨界合作，高度還原遊戲場景與角色互動的專屬密室。", category: "密室逃脫"},
+            {name: "伊藤潤二富仇", desc: "攜手木棉花授權，將驚悚漫畫大師伊藤潤二筆下的經典恐懼立體化的話題之作。", category: "密室逃脫"},
+            {name: "聊齋奇遇", desc: "於宜蘭傳藝中心舉辦，支援百人同時遊玩、結合志怪小說元素的超大型實境解謎。", category: "大型實境遊戲"},
+            {name: "INGRESS高雄", desc: "受知名AR手遊開發商Niantic委託，結合高雄在地景點的大型城市探索實境遊戲。", category: "大型實境遊戲"},
+            {name: "INGRESS中壢", desc: "延續AR手遊熱潮，將遊戲機制與中壢市區文化地景深度結合的大型玩家活動。", category: "大型實境遊戲"},
+            {name: "跑趴跑趴星球", desc: "ELLE 時尚雜誌跨界合作，為時尚派對打造專屬、充滿話題性的實境解謎互動。", category: "大型實境遊戲"},
+            {name: "光明的守護者", desc: "位於新竹光明新村，結合社區歷史與在地風貌的專案型實境解謎活動。", category: "大型實境遊戲"},
+            {name: "馬偕大戰牙仙子", desc: "以淡水老街與馬偕博士歷史為背景，帶領玩家穿梭古蹟尋找線索的戶外實境遊戲。", category: "大型實境遊戲"},
+            {name: "奧林匹克的考驗", desc: "專為企業 Team Building 量身打造，強調團隊分工、溝通與體力激盪的競賽型遊戲。", category: "大型實境遊戲"},
+            {name: "忍者試煉", desc: "企業團隊建立專屬方案，以忍者培訓為包裝，高度考驗團隊默契與解謎速度。", category: "大型實境遊戲"},
+            {name: "異星求生", desc: "企業培訓熱門主題，模擬外星生存危機，透過遊戲機制強化團隊危機處理與決策能力。", category: "大型實境遊戲"},
+            {name: "梧棲之謎", desc: "針對特定場域客製化設計，深度結合地方文史與場景特色的實境解謎遊戲。", category: "大型實境遊戲"},
+            {name: "誠就卓越之路", desc: "知名四大會計師事務所 PwC (資誠) 委託，融入企業核心價值的百人大型培訓遊戲。", category: "大型實境遊戲"},
+            {name: "微光夜宴", desc: "得標新北文化局專案，於百年古蹟林本源園邸夜間限定演出的極致沉浸式劇場。", category: "沉浸式劇場"},
+            {name: "紅珊發表會", desc: "巧妙包裝直銷與社會議題，讓玩家在劇本殺與互動劇場中反思人性抉擇的深刻體驗。", category: "沉浸式劇場"},
+            {name: "任務代號:邁阿密", desc: "為微風百貨「微風之夜」頂級VIP活動量身打造，結合精品氛圍的沉浸式解謎互動。", category: "沉浸式劇場"},
+            {name: "羊群的失控", desc: "與圓山大飯店跨界合作，將解謎遊戲與飯店住宿完美結合的兩天一夜深度實境體驗。", category: "實境解謎遊戲"},
+            {name: "少女的寶藏庫", desc: "台北京站時尚廣場委託，結合百貨商場動線與專櫃互動的逛街型實境解謎。", category: "實境解謎遊戲"},
+            {name: "守護者的請託", desc: "台灣水泥 (台泥) 企業委託，將環保議題與企業理念巧妙融入遊戲機制的解謎活動。", category: "實境解謎遊戲"},
+            {name: "秘術88號", desc: "嘉義文創園區專案，結合園區舊酒廠歷史與工業風貌的區域型實境解謎遊戲。", category: "實境解謎遊戲"},
+            {name: "新十二生肖", desc: "常駐於傳藝中心，以經典民間故事為基礎，適合親子共遊的園區解謎活動。", category: "實境解謎遊戲"},
+            {name: "星之芳庭", desc: "台中知名景點心之芳庭委託，為浪漫莊園增添解謎探索樂趣的客製化實境遊戲。", category: "實境解謎遊戲"},
+            {name: "仙旅其園-入侵者", desc: "新北市文化局林家花園專案，結合AR與古蹟實景的奇幻風格實境解謎體驗。", category: "實境解謎遊戲"},
+            {name: "故宮之星", desc: "國立故宮博物院標案，將國寶文物知識轉化為趣味謎題的文化教育型實境遊戲。", category: "實境解謎遊戲"},
+            {name: "環城之戀", desc: "超人氣手遊《戀與製作人》委託，讓玩家在實體城市中重溫遊戲浪漫情節的專屬活動。", category: "實境解謎遊戲"},
+            {name: "亭仔腳捉迷藏", desc: "萬華城西文化節專案，帶領玩家穿梭老街巷弄，探索在地故事的文化解謎遊戲。", category: "實境解謎遊戲"},
+            {name: "菸神的考驗", desc: "日菸國際集團 (JTI) 委託，為企業內部活動設計、深具娛樂性與品牌傳遞的專屬遊戲。", category: "實境解謎遊戲"},
+            {name: "勇敢任務", desc: "東京威力科創尾牙活動委託，讓千人同樂、跨部門破冰嗨翻天的超大型解謎派對。", category: "實境解謎遊戲"},
+            {name: "AFTER PARTY", desc: "全英文語系設計，專為外籍人士與外商企業打造的無語言隔閡實境解謎活動。", category: "實境解謎遊戲"},
+            {name: "諾迪墨克西大廈", desc: "新北市文化局專案，以白色恐怖歷史為背景，充滿懸疑與深刻反思的劇情解謎遊戲。", category: "實境解謎遊戲"},
+            {name: "月老的考驗", desc: "彰化縣政府聯誼活動委託，透過遊戲機制自然破冰，大幅提升單身男女互動率。", category: "實境解謎遊戲"},
+            {name: "星際探險隊", desc: "專業聯誼公司委託，將科幻冒險元素融入聯誼環節，打造輕鬆有趣的交友體驗。", category: "實境解謎遊戲"},
+            {name: "試煉島的遺跡", desc: "國立成功大學委託，為校園活動設計、結合校園腹地與學術知識的實境解謎。", category: "實境解謎遊戲"},
+            {name: "大佛出動", desc: "彰化縣政府專案，以八卦山大佛等知名地標為核心的城市定向解謎尋寶活動。", category: "實境解謎遊戲"},
+            {name: "抱茜", desc: "結合社群媒體與網路解謎的 ARG (另類實境遊戲)，成功創造話題與病毒式行銷宣傳。", category: "手機遊戲"},
+            {name: "圖靈計畫", desc: "探討人工智慧與倫理議題，劇情張力十足、帶領玩家深度思考的手機互動解謎遊戲。", category: "手機遊戲"},
+            {name: "幽谷試煉", desc: "台灣防溺協會委託，將水域安全知識轉化為引人入勝的手機文字冒險與解謎遊戲。", category: "手機遊戲"},
+            {name: "青天大判官", desc: "政府機關政風處委託，以生動趣味的解謎方式宣導廉政觀念與法律知識的手機遊戲。", category: "手機遊戲"},
+            {name: "罪證紀念簿", desc: "結合特定實體商品販售，掃描條碼或搭配道具即可展開推理調查的創新解謎桌遊。", category: "解謎桌遊"},
+            {name: "與人過節", desc: "榮獲客家委員會比賽獎項，巧妙融合客家傳統節慶與文化內涵的高質感解謎桌遊。", category: "解謎桌遊"},
+            {name: "克利爾瓦特保衛戰", desc: "汙水處理廠教育專案，以桌遊形式讓大眾輕鬆了解水資源處理過程與環保重要性。", category: "解謎桌遊"}
+        ];
+    </script>
+
     <style>
-        /* 基礎設定：深色專業背景，無光暈 */
+        /* 基礎設定：配合夢幻暗色系的底色 */
         body {
-            background-color: #111827; /* 深灰/藏青背景 */
-            color: #F3F4F6; /* 淺灰白字體 */
+            background-color: #0F0A18; /* 深紫黑 */
+            color: #F3F4F6;
             font-family: 'Helvetica Neue', Arial, 'LiHei Pro', '微軟正黑體', sans-serif;
             -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        /* --- 🌟 背景替換區 🌟 --- */
+        .city-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.8) saturate(1.3) hue-rotate(15deg);
+            animation: slowZoom 20s ease-out forwards;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* 背景深色遮罩 */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: linear-gradient(to bottom, rgba(30,10,60,0.3) 0%, rgba(15,5,30,0.7) 50%, rgba(5,0,15,0.95) 100%);
         }
 
         /* 滾動浮現動畫 */
         .fade-in-up {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(40px);
+            filter: blur(10px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .fade-in-up.visible {
             opacity: 1;
             transform: translateY(0);
+            filter: blur(0);
         }
 
-        /* 扁平化深色卡片 */
+        /* 毛玻璃質感卡片 */
         .flat-card {
-            background-color: #1F2937;
-            border: 1px solid #374151;
+            background-color: rgba(20, 10, 40, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(168, 85, 247, 0.25);
             border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(168,85,247,0.15);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .flat-card:hover {
+            border-color: rgba(192, 132, 252, 0.6);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168,85,247,0.3);
+            transform: translateY(-3px);
+            background-color: rgba(30, 15, 60, 0.55);
+        }
+
+        /* 作品集分類按鈕樣式 */
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active {
+            background-color: rgba(168, 85, 247, 0.8);
+            border-color: rgba(192, 132, 252, 1);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(168,85,247,0.6);
         }
 
         /* 隱藏 details 預設的箭頭 */
@@ -41,192 +151,264 @@
             display: none;
         }
         
-        /* 使用純文字的 ＋ 和 － 作為展開收合提示，不使用 ICON */
-        .accordion-indicator::after {
-            content: '＋';
-            font-weight: bold;
-        }
-        details[open] .accordion-indicator::after {
-            content: '－';
-        }
-        
-        /* 點開後改變提示文字 */
-        details[open] .expand-text::before {
-            content: '收起說明 ';
-        }
-        details:not([open]) .expand-text::before {
-            content: '點擊展開說明 ';
-        }
+        .accordion-indicator::after { content: '＋'; font-weight: bold; }
+        details[open] .accordion-indicator::after { content: '－'; }
+        details[open] .expand-text::before { content: '收起說明 '; }
+        details:not([open]) .expand-text::before { content: '點擊展開說明 '; }
 
-        /* 按鈕點擊動畫 */
-        .btn-active:active {
-            transform: scale(0.98);
-        }
+        .btn-active:active { transform: scale(0.98); }
     </style>
 </head>
-<body class="text-lg pb-8"> <!-- 基礎字體保持放大 (text-lg) -->
+<body class="text-lg pb-8">
 
-    <!-- 主視覺與個人簡介 -->
-    <header class="pt-16 pb-12 px-6 flex flex-col items-center text-center fade-in-up">
-        
-        <!-- 📷 替換個人照片區域 📷 -->
-        <div class="w-36 h-36 mb-6 rounded-full overflow-hidden border-2 border-gray-600 bg-gray-800 flex items-center justify-center">
-            <img 
-                src="https://cdn.jsdelivr.net/gh/onegameonedestiny/picture@main/love/%E5%A4%A7%E9%A0%AD-01.png" 
-                alt="楊道昀 照片" 
-                class="w-full h-full object-cover"
-            >
-        </div>
-        
-        <h1 class="text-4xl font-bold tracking-wider mb-2 text-white">楊道昀</h1>
-        <h2 class="text-gray-400 text-lg tracking-widest mb-8 font-bold">沉夢體驗遊戲工作室 遊戲設計師</h2>
-        
-        <blockquote class="text-xl italic text-gray-300 border-l-4 border-gray-500 pl-4 py-1 text-left">
-            「做一場沉浸的夢，<br>夢醒後...人生將有所不同」
-        </blockquote>
-    </header>
+    <div class="city-background"></div>
+    <div class="bg-overlay"></div>
 
-    <!-- 關於我區塊 -->
-    <section class="px-6 py-6 fade-in-up">
-        <div class="flex items-center mb-6">
-            <div class="w-1 h-7 bg-blue-500 mr-3"></div>
-            <h3 class="text-2xl font-bold tracking-wider text-white">關於｜Profile</h3>
-        </div>
-        
-        <div class="flat-card p-6 mb-6">
-            <p class="text-blue-400 font-bold text-xl mb-5 leading-relaxed tracking-wide">
-                • 超過八年實境遊戲經驗<br>
-                • 50款以上遊戲製作<br>
-                • 豐富公部門合作經歷
-            </p>
-            <p class="text-gray-300 leading-relaxed mb-5 text-lg">
-                專注於「沉浸式體驗」與「實境遊戲」設計。擁有國小教師與領隊導遊雙證照的獨特背景，更懂得如何結合教育與史地。
-            </p>
-            <p class="text-gray-300 leading-relaxed text-lg">
-                擅長將生硬的資訊或議題，巧妙包裝成引人入勝的遊戲機制；同時，透過精準的流程設計，讓玩家在遊玩過程中自然產生強烈的團隊凝聚力。具備從 8 人的精緻小型體驗，到高達 200 人大型活動的完善設計與執行經驗。
-            </p>
-        </div>
-    </section>
+    <!-- 加上 max-w-6xl 讓電腦版的版面置中 -->
+    <main class="max-w-6xl mx-auto w-full relative z-10">
 
-    <!-- 業務內容區塊 (直接展開設計) -->
-    <section class="px-6 py-6 fade-in-up">
-        <div class="flex items-center mb-6">
-            <div class="w-1 h-7 bg-green-500 mr-3"></div>
-            <h3 class="text-2xl font-bold tracking-wider text-white">業務內容｜Services</h3>
-        </div>
-        
-        <p class="text-gray-400 mb-6 text-base tracking-wide">提供以下五大領域的遊戲設計服務：</p>
-
-        <div class="space-y-4">
-            <!-- 服務 1 -->
-            <div class="flat-card p-5">
-                <h4 class="text-xl font-bold text-white tracking-wide">活動型遊戲</h4>
-                <p class="text-green-400 font-bold mt-1 mb-3 text-base">活絡氣氛、凝聚向心力</p>
-                <p class="text-lg leading-relaxed text-gray-300">
-                    專為公司 Team Building（團隊建立）、春酒尾牙、聯誼破冰等活動量身打造，讓參與者在歡笑中拉近距離。
-                </p>
+        <!-- 主視覺與個人簡介 -->
+        <header class="pt-20 pb-12 px-6 flex flex-col items-center text-center fade-in-up">
+            <div class="w-36 h-36 mb-6 rounded-full overflow-hidden border-2 border-purple-400/80 bg-purple-900/50 flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.5)]">
+                <img src="https://cdn.jsdelivr.net/gh/onegameonedestiny/picture@main/love/%E5%A4%A7%E9%A0%AD-01.png" alt="楊道昀 照片" class="w-full h-full object-cover">
             </div>
-
-            <!-- 服務 2 -->
-            <div class="flat-card p-5">
-                <h4 class="text-xl font-bold text-white tracking-wide">宣傳型遊戲</h4>
-                <p class="text-blue-400 font-bold mt-1 mb-3 text-base">創造話題、深化品牌印象</p>
-                <p class="text-lg leading-relaxed text-gray-300">
-                    透過遊戲傳遞公司理念、節慶活動宣傳，或是將線上遊戲轉化為線下實體活動，讓行銷變得更好玩。
-                </p>
-            </div>
-
-            <!-- 服務 3 -->
-            <div class="flat-card p-5">
-                <h4 class="text-xl font-bold text-white tracking-wide">教育型遊戲</h4>
-                <p class="text-yellow-400 font-bold mt-1 mb-3 text-base">寓教於樂、無痛吸收新知</p>
-                <p class="text-lg leading-relaxed text-gray-300">
-                    適用於企業員工訓練、博物館深度導覽、社會議題宣導與 NGO 理念推廣，讓學習不再枯燥乏味。
-                </p>
-            </div>
-
-            <!-- 服務 4 -->
-            <div class="flat-card p-5">
-                <h4 class="text-xl font-bold text-white tracking-wide">營利型遊戲</h4>
-                <p class="text-pink-400 font-bold mt-1 mb-3 text-base">結合 IP、創造新商業模式</p>
-                <p class="text-lg leading-relaxed text-gray-300">
-                    結合特定場地、商圈或既有 IP，開發專屬的線上或線下實境遊戲，打造具有獲利能力的商業專案。
-                </p>
-            </div>
-
-            <!-- 服務 5 -->
-            <div class="flat-card p-5">
-                <h4 class="text-xl font-bold text-white tracking-wide">沉浸體驗設計</h4>
-                <p class="text-purple-400 font-bold mt-1 mb-3 text-base">五感全開、極致互動</p>
-                <p class="text-lg leading-relaxed text-gray-300">
-                    結合專業的聲光效果與真人演員演出，打造打破第四面牆的深刻互動體驗。（例如：結合戲劇演出的微醺品酒會）
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 什麼是實境遊戲 (明顯可點開的區塊) -->
-    <section class="px-6 py-8 fade-in-up">
-        <!-- 外框加上特別顏色，讓它看起來像個大型按鈕 -->
-        <details class="flat-card group overflow-hidden border-2 border-purple-500/50 bg-gray-800">
-            <summary class="p-6 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-700 transition-colors text-center">
-                <h3 class="text-2xl font-bold tracking-wider text-white mb-3">什麼是實境遊戲？</h3>
-                <!-- 明顯的點擊提示標籤 -->
-                <div class="text-purple-300 font-bold text-sm tracking-widest bg-purple-900/60 px-5 py-2 rounded-full border border-purple-500/50">
-                    <span class="expand-text"></span><span class="accordion-indicator ml-1"></span>
-                </div>
-            </summary>
             
-            <div class="p-6 border-t border-purple-500/30 bg-gray-900 space-y-6 text-left">
-                <!-- 科普 1 -->
-                <div>
-                    <h4 class="text-xl font-bold text-white tracking-wide mb-2">戶外實境解謎遊戲</h4>
-                    <p class="text-lg leading-relaxed text-gray-300">
-                        利用既有的場地與現實造景作為遊戲的一部分。玩家通常會搭配手機網頁或 APP，專注於探索現實環境中的蛛絲馬跡。
-                    </p>
-                </div>
-
-                <!-- 科普 2 -->
-                <div>
-                    <h4 class="text-xl font-bold text-white tracking-wide mb-2">密室逃脫</h4>
-                    <p class="text-lg leading-relaxed text-gray-300">
-                        將一個空白的實體空間進行重新裝潢與機關設計，把玩家關進一個充滿謎題的異世界。
-                    </p>
-                </div>
-
-                <!-- 科普 3 -->
-                <div>
-                    <h4 class="text-xl font-bold text-white tracking-wide mb-2">沉浸式劇場</h4>
-                    <p class="text-lg leading-relaxed text-gray-300">
-                        最早源自於百老匯的戲劇體驗方式，如今已在台灣造成流行，屬於高單價的高貴體驗。強調極致的氣氛營造，結合聲光效果與演員的近距離演出，讓玩家不再只是觀眾，而是親身走入劇情之中。
-                    </p>
-                </div>
+            <!-- 調整手機版字體大小 (text-4xl) 與電腦版大小 (md:text-5xl) -->
+            <h1 class="text-4xl md:text-5xl font-black tracking-widest mb-3 text-purple-50 drop-shadow-[0_0_20px_rgba(192,132,252,0.8)]">楊道昀</h1>
+            <h2 class="text-purple-200 text-lg md:text-xl tracking-[0.2em] mb-5 font-bold drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">沉夢體驗遊戲工作室</h2>
+            
+            <div class="flex flex-wrap justify-center gap-3 mb-10 max-w-xl">
+                <span class="px-4 py-1.5 bg-purple-900/40 border border-purple-400/50 rounded-full text-purple-50 text-sm font-bold tracking-widest backdrop-blur-sm shadow-[0_0_10px_rgba(168,85,247,0.4)]">遊戲設計師</span>
+                <span class="px-4 py-1.5 bg-purple-900/40 border border-purple-400/50 rounded-full text-purple-50 text-sm font-bold tracking-widest backdrop-blur-sm shadow-[0_0_10px_rgba(168,85,247,0.4)]">密室機關設計師</span>
+                <span class="px-4 py-1.5 bg-purple-900/40 border border-purple-400/50 rounded-full text-purple-50 text-sm font-bold tracking-widest backdrop-blur-sm shadow-[0_0_10px_rgba(168,85,247,0.4)]">遊戲設計課程講師</span>
+                <span class="px-4 py-1.5 bg-purple-900/40 border border-purple-400/50 rounded-full text-purple-50 text-sm font-bold tracking-widest backdrop-blur-sm shadow-[0_0_10px_rgba(168,85,247,0.4)]">活動主持人</span>
             </div>
-        </details>
-    </section>
+            
+            <blockquote class="text-xl italic text-purple-100 border-l-4 border-purple-400 pl-5 py-2 text-left drop-shadow-lg bg-purple-900/20 backdrop-blur-sm pr-4 rounded-r-lg shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                「做一場沉浸的夢，<br>夢醒後...人生將有所不同」
+            </blockquote>
+        </header>
 
-    <!-- 放置於最下方的 LINE 聯絡按鈕 -->
-    <div class="px-6 py-6 flex justify-center fade-in-up">
-        <a 
-            href="https://line.me/ti/p/d5hUmI6iPG" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="btn-active w-full max-w-md bg-[#06C755] hover:bg-[#05b34c] text-white text-center font-bold text-xl py-4 px-4 rounded-lg transition-colors"
-        >
-            與我聯繫 (LINE)
-        </a>
-    </div>
+        <div class="max-w-5xl mx-auto">
+            
+            <!-- 關於我區塊 -->
+            <section class="px-6 py-6 fade-in-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-1.5 h-7 bg-gradient-to-b from-cyan-400 to-purple-500 mr-3 drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+                    <h3 class="text-2xl font-black tracking-widest text-white drop-shadow-[0_0_8px_rgba(192,132,252,0.6)]">關於｜Profile</h3>
+                </div>
+                
+                <div class="flat-card p-6 mb-6 md:p-8">
+                    <p class="text-purple-200 font-black text-xl mb-5 leading-relaxed tracking-wide border-b border-purple-500/30 pb-4 drop-shadow-md">
+                        • 超過八年實境遊戲經驗<br>
+                        • 50款以上遊戲製作<br>
+                        • 豐富公部門合作經歷
+                    </p>
+                    <p class="text-gray-200 leading-relaxed mb-5 text-lg drop-shadow-md">
+                        專注於「沉浸式體驗」與「實境遊戲」設計。擁有國小教師與領隊導圓雙證照的獨特背景，更懂得如何結合教育與史地。
+                    </p>
+                    <p class="text-gray-200 leading-relaxed text-lg drop-shadow-md">
+                        擅長將生硬的資訊或議題，巧妙包裝成引人入勝的遊戲機制；同時，透過精準的流程設計，讓玩家在遊玩過程中自然產生強烈的團隊凝聚力。具備從 8 人的精緻小型體驗，到高達百人大型活動的完善設計與執行經驗。
+                    </p>
+                </div>
+            </section>
 
-    <!-- 頁尾 -->
-    <footer class="text-center pb-10 pt-4 text-gray-500 text-sm tracking-widest">
-        <p>© 楊道昀 沉夢體驗遊戲工作室</p>
-    </footer>
+            <!-- 業務內容區塊 -->
+            <section class="px-6 py-6 fade-in-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-1.5 h-7 bg-gradient-to-b from-purple-400 to-fuchsia-500 mr-3 drop-shadow-[0_0_8px_rgba(192,132,252,0.6)]"></div>
+                    <h3 class="text-2xl font-black tracking-widest text-white drop-shadow-[0_0_8px_rgba(192,132,252,0.6)]">業務內容｜Services</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-purple-500/40 group-hover:bg-purple-400 transition-colors shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
+                        <h4 class="text-xl font-black text-white tracking-widest pl-2">活動型遊戲</h4>
+                        <p class="text-purple-300 font-bold mt-1 mb-3 text-base pl-2 tracking-wide drop-shadow-md">活絡氣氛、凝聚向心力</p>
+                        <p class="text-lg leading-relaxed text-gray-300 pl-2">專為公司 Team Building、春酒尾牙、聯誼破冰等活動量身打造，讓參與者在歡笑中拉近距離。</p>
+                    </div>
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-purple-500/40 group-hover:bg-purple-400 transition-colors shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
+                        <h4 class="text-xl font-black text-white tracking-widest pl-2">宣傳型遊戲</h4>
+                        <p class="text-purple-300 font-bold mt-1 mb-3 text-base pl-2 tracking-wide drop-shadow-md">創造話題、深化品牌印象</p>
+                        <p class="text-lg leading-relaxed text-gray-300 pl-2">透過遊戲傳遞公司理念、節慶活動宣傳，或是將線上遊戲轉化為線下實體活動，讓行銷變得更好玩。</p>
+                    </div>
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-purple-500/40 group-hover:bg-purple-400 transition-colors shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
+                        <h4 class="text-xl font-black text-white tracking-widest pl-2">教育型遊戲</h4>
+                        <p class="text-purple-300 font-bold mt-1 mb-3 text-base pl-2 tracking-wide drop-shadow-md">寓教於樂、無痛吸收新知</p>
+                        <p class="text-lg leading-relaxed text-gray-300 pl-2">適用於企業員工訓練、博物館深度導覽、社會議題宣導與 NGO 理念推廣，讓學習不再枯燥乏味。</p>
+                    </div>
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-purple-500/40 group-hover:bg-purple-400 transition-colors shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
+                        <h4 class="text-xl font-black text-white tracking-widest pl-2">營利型遊戲</h4>
+                        <p class="text-purple-300 font-bold mt-1 mb-3 text-base pl-2 tracking-wide drop-shadow-md">結合 IP、創造新商業模式</p>
+                        <p class="text-lg leading-relaxed text-gray-300 pl-2">結合特定場地、商圈或既有 IP，開發專屬的線上或線下實境遊戲，打造具有獲利能力的商業專案。</p>
+                    </div>
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col md:col-span-2">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-purple-500/40 group-hover:bg-purple-400 transition-colors shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
+                        <h4 class="text-xl font-black text-white tracking-widest pl-2">沉浸體驗設計</h4>
+                        <p class="text-purple-300 font-bold mt-1 mb-3 text-base pl-2 tracking-wide drop-shadow-md">五感全開、極致互動</p>
+                        <p class="text-lg leading-relaxed text-gray-300 pl-2">結合專業的聲光效果與真人演員演出，打造打破第四面牆的深刻互動體驗。（例如：結合戲劇演出的微醺品酒會）</p>
+                    </div>
+                </div>
+            </section>
 
-    <!-- 輕量級滾動動畫腳本 -->
+            <!-- 開發載體 (使用平台) 區塊 -->
+            <section class="px-6 py-6 fade-in-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-1.5 h-7 bg-gradient-to-b from-sky-400 to-indigo-500 mr-3 drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]"></div>
+                    <h3 class="text-2xl font-black tracking-widest text-white drop-shadow-[0_0_8px_rgba(192,132,252,0.6)]">支援載體｜Platforms</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col h-full hover:-translate-y-2">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-cyan-400/50 group-hover:bg-cyan-300 transition-colors shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
+                        <h4 class="text-lg font-black text-white tracking-widest pl-2 mb-3">純實體道具體驗</h4>
+                        <p class="text-base leading-relaxed text-gray-300 pl-2 mt-auto">無需依賴手機或網路，透過精緻的實體道具與機關，打造最純粹的觸覺體驗與面對面的團隊互動。</p>
+                    </div>
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col h-full hover:-translate-y-2">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-rose-400/50 group-hover:bg-rose-300 transition-colors shadow-[0_0_10px_rgba(251,113,133,0.5)]"></div>
+                        <h4 class="text-lg font-black text-white tracking-widest pl-2 mb-3">知名實境平台</h4>
+                        <p class="text-base leading-relaxed text-gray-300 pl-2 mt-auto">採用業界成熟的解謎 APP（Popworld / Playreal），專為戶外探索與定位量身打造，系統穩定且操作直覺。</p>
+                    </div>
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col h-full hover:-translate-y-2">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-green-400/50 group-hover:bg-green-300 transition-colors shadow-[0_0_10px_rgba(74,222,128,0.5)]"></div>
+                        <h4 class="text-lg font-black text-white tracking-widest pl-2 mb-3">LINE BOT 輕量互動</h4>
+                        <p class="text-base leading-relaxed text-gray-300 pl-2 mt-auto">玩家免下載 APP，直接使用全台普及率最高的 LINE 即可遊玩，大幅降低參與門檻，適合快速破冰或宣傳活動。</p>
+                    </div>
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col h-full hover:-translate-y-2">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-emerald-400/50 group-hover:bg-emerald-300 transition-colors shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div>
+                        <h4 class="text-lg font-black text-white tracking-widest pl-2 mb-3">LINE BOT (結合雲端)</h4>
+                        <p class="text-base leading-relaxed text-gray-300 pl-2 mt-auto">除了基礎互動，更能支援進度存檔、積分排行榜與玩家數據收集，適合需要後台管理與行銷追蹤的中大型專案。</p>
+                    </div>
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col h-full hover:-translate-y-2">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-amber-400/50 group-hover:bg-amber-300 transition-colors shadow-[0_0_10px_rgba(251,191,36,0.5)]"></div>
+                        <h4 class="text-lg font-black text-white tracking-widest pl-2 mb-3">客製化專屬網頁</h4>
+                        <p class="text-base leading-relaxed text-gray-300 pl-2 mt-auto">量身打造符合品牌或活動主視覺的專屬遊戲入口，展現最高度的視覺靈活度與沈浸感（免下載即可遊玩）。</p>
+                    </div>
+                    <div class="flat-card p-6 relative overflow-hidden group flex flex-col h-full hover:-translate-y-2">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-orange-500/50 group-hover:bg-orange-400 transition-colors shadow-[0_0_10px_rgba(249,115,22,0.5)]"></div>
+                        <h4 class="text-lg font-black text-white tracking-widest pl-2 mb-3">專屬網頁 (結合雲端)</h4>
+                        <p class="text-base leading-relaxed text-gray-300 pl-2 mt-auto">具備會員機制、積分排行與跨裝置進度記憶功能，可配合長線活動或企業內訓，打造旗艦級的專屬互動體驗。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🌟 全新區塊：指標合作夥伴牆 🌟 -->
+            <section class="px-6 py-10 fade-in-up">
+                <div class="flex items-center justify-center mb-8">
+                    <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-purple-500/50"></div>
+                    <h3 class="text-2xl font-black tracking-widest text-white mx-4 drop-shadow-[0_0_10px_rgba(192,132,252,0.8)] text-center">合作指標品牌</h3>
+                    <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-purple-500/50"></div>
+                </div>
+                <p class="text-center text-purple-200/80 mb-6 text-sm tracking-widest">與知名企業、公部門、熱門 IP 攜手打造沉浸體驗</p>
+                
+                <!-- 品牌標籤陣列 -->
+                <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+                    <!-- 政府/公家機關 -->
+                    <span class="px-5 py-2 bg-black/40 border border-purple-500/30 rounded-lg text-purple-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">國立故宮博物院</span>
+                    <span class="px-5 py-2 bg-black/40 border border-purple-500/30 rounded-lg text-purple-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">新北市政府文化局</span>
+                    <span class="px-5 py-2 bg-black/40 border border-purple-500/30 rounded-lg text-purple-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">客家委員會</span>
+                    <span class="px-5 py-2 bg-black/40 border border-purple-500/30 rounded-lg text-purple-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">國立傳統藝術中心</span>
+                    <span class="px-5 py-2 bg-black/40 border border-purple-500/30 rounded-lg text-purple-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">彰化縣政府</span>
+                    <span class="px-5 py-2 bg-black/40 border border-purple-500/30 rounded-lg text-purple-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">嘉義文創園區</span>
+                    <!-- 企業/品牌 -->
+                    <span class="px-5 py-2 bg-black/40 border border-cyan-500/30 rounded-lg text-cyan-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">資誠 PwC Taiwan</span>
+                    <span class="px-5 py-2 bg-black/40 border border-cyan-500/30 rounded-lg text-cyan-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">東京威力科創</span>
+                    <span class="px-5 py-2 bg-black/40 border border-cyan-500/30 rounded-lg text-cyan-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">台灣水泥 (台泥)</span>
+                    <span class="px-5 py-2 bg-black/40 border border-cyan-500/30 rounded-lg text-cyan-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">ELLE 雜誌</span>
+                    <span class="px-5 py-2 bg-black/40 border border-cyan-500/30 rounded-lg text-cyan-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">圓山大飯店</span>
+                    <span class="px-5 py-2 bg-black/40 border border-cyan-500/30 rounded-lg text-cyan-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">微風百貨</span>
+                    <span class="px-5 py-2 bg-black/40 border border-cyan-500/30 rounded-lg text-cyan-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">京站時尚廣場</span>
+                    <!-- 遊戲與 IP -->
+                    <span class="px-5 py-2 bg-black/40 border border-pink-500/30 rounded-lg text-pink-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">新楓之谷</span>
+                    <span class="px-5 py-2 bg-black/40 border border-pink-500/30 rounded-lg text-pink-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">戀與製作人</span>
+                    <span class="px-5 py-2 bg-black/40 border border-pink-500/30 rounded-lg text-pink-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">Niantic (INGRESS)</span>
+                    <span class="px-5 py-2 bg-black/40 border border-pink-500/30 rounded-lg text-pink-100 font-bold tracking-widest shadow-[0_0_10px_rgba(0,0,0,0.5)]">木棉花 (伊藤潤二)</span>
+                </div>
+            </section>
+
+            <!-- 🌟 全新區塊：歷年作品集 (47項) 🌟 -->
+            <section class="px-6 py-6 fade-in-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-1.5 h-7 bg-gradient-to-b from-fuchsia-400 to-rose-500 mr-3 drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]"></div>
+                    <h3 class="text-2xl font-black tracking-widest text-white drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]">歷年作品｜Portfolio</h3>
+                    <span class="ml-3 text-sm font-bold text-purple-300 bg-purple-900/50 px-2 py-0.5 rounded">40+</span>
+                </div>
+                
+                <!-- 互動式篩選按鈕列 -->
+                <div class="flex flex-wrap gap-2 mb-8" id="filter-container">
+                    <button class="filter-btn active px-4 py-1.5 border border-purple-500/50 rounded-full text-sm font-bold tracking-widest text-purple-200" data-filter="all">全部顯示</button>
+                    <button class="filter-btn px-4 py-1.5 border border-purple-500/50 rounded-full text-sm font-bold tracking-widest text-purple-200 hover:bg-purple-900/50" data-filter="密室逃脫">密室逃脫</button>
+                    <button class="filter-btn px-4 py-1.5 border border-purple-500/50 rounded-full text-sm font-bold tracking-widest text-purple-200 hover:bg-purple-900/50" data-filter="大型實境遊戲">大型實境遊戲</button>
+                    <button class="filter-btn px-4 py-1.5 border border-purple-500/50 rounded-full text-sm font-bold tracking-widest text-purple-200 hover:bg-purple-900/50" data-filter="沉浸式劇場">沉浸式劇場</button>
+                    <button class="filter-btn px-4 py-1.5 border border-purple-500/50 rounded-full text-sm font-bold tracking-widest text-purple-200 hover:bg-purple-900/50" data-filter="實境解謎遊戲">實境解謎遊戲</button>
+                    <button class="filter-btn px-4 py-1.5 border border-purple-500/50 rounded-full text-sm font-bold tracking-widest text-purple-200 hover:bg-purple-900/50" data-filter="手機遊戲">手機遊戲</button>
+                    <button class="filter-btn px-4 py-1.5 border border-purple-500/50 rounded-full text-sm font-bold tracking-widest text-purple-200 hover:bg-purple-900/50" data-filter="解謎桌遊">解謎桌遊</button>
+                </div>
+
+                <!-- 作品卡片陣列 Grid -->
+                <!-- 手機1欄, 平板2欄, 電腦3欄, 大螢幕4欄 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="portfolio-grid">
+                    <!-- 卡片將由下方的 JS 讀取上方設定的 portfolioData 自動生成 -->
+                </div>
+            </section>
+
+            <!-- 什麼是實境遊戲 -->
+            <section class="px-6 py-8 fade-in-up">
+                <details class="flat-card group overflow-hidden border-2 border-purple-500/40 bg-indigo-950/40">
+                    <summary class="p-6 md:py-8 flex flex-col justify-center items-center cursor-pointer hover:bg-purple-900/30 transition-colors text-center">
+                        <h3 class="text-2xl md:text-3xl font-black tracking-widest text-white mb-4 drop-shadow-[0_0_10px_rgba(192,132,252,0.6)]">什麼是實境遊戲？</h3>
+                        <div class="text-purple-100 font-black text-sm tracking-widest bg-purple-800/40 px-6 py-2 rounded-full border border-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                            <span class="expand-text"></span><span class="accordion-indicator ml-1"></span>
+                        </div>
+                    </summary>
+                    
+                    <div class="p-6 md:p-8 border-t border-purple-500/30 bg-black/40 space-y-8 text-left">
+                        <div>
+                            <h4 class="text-xl font-black text-purple-100 tracking-widest mb-2 flex items-center">
+                                <span class="w-1.5 h-5 bg-cyan-400 mr-2 inline-block shadow-[0_0_8px_rgba(34,211,238,0.8)]"></span>戶外實境解謎遊戲
+                            </h4>
+                            <p class="text-lg leading-relaxed text-gray-300 pl-3 border-l border-purple-500/30 ml-0.5">利用既有的場地與現實造景作為遊戲的一部分。玩家通常會搭配手機網頁或 APP，專注於探索現實環境中的蛛絲馬跡。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-black text-purple-100 tracking-widest mb-2 flex items-center">
+                                <span class="w-1.5 h-5 bg-cyan-400 mr-2 inline-block shadow-[0_0_8px_rgba(34,211,238,0.8)]"></span>密室逃脫
+                            </h4>
+                            <p class="text-lg leading-relaxed text-gray-300 pl-3 border-l border-purple-500/30 ml-0.5">將一個空白的實體空間進行重新裝潢與機關設計，把玩家關進一個充滿謎題的異世界。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-black text-purple-100 tracking-widest mb-2 flex items-center">
+                                <span class="w-1.5 h-5 bg-cyan-400 mr-2 inline-block shadow-[0_0_8px_rgba(34,211,238,0.8)]"></span>沉浸式劇場
+                            </h4>
+                            <p class="text-lg leading-relaxed text-gray-300 pl-3 border-l border-purple-500/30 ml-0.5">最早源自於百老匯的戲劇體驗方式，如今已在台灣造成流行，屬於高單價的高貴體驗。強調極致的氣氛營造，結合聲光效果與演員的近距離演出，讓玩家不再只是觀眾，而是親身走入劇情之中。</p>
+                        </div>
+                    </div>
+                </details>
+            </section>
+
+            <!-- 聯絡按鈕 -->
+            <div class="px-6 py-8 flex justify-center fade-in-up">
+                <a 
+                    href="https://line.me/ti/p/d5hUmI6iPG" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="btn-active w-full max-w-md bg-purple-900/40 backdrop-blur-md border-2 border-purple-400 text-white hover:bg-purple-600 hover:border-purple-300 text-center font-black tracking-widest text-2xl py-5 px-4 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_35px_rgba(192,132,252,0.8)]"
+                >
+                    與我聯繫 (LINE)
+                </a>
+            </div>
+
+            <footer class="text-center pb-10 pt-4 text-purple-300/50 text-sm tracking-widest drop-shadow-md">
+                <p>© 楊道昀 沉夢體驗遊戲工作室</p>
+            </footer>
+
+        </div>
+    </main>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // 處理滾動動畫
             const elements = document.querySelectorAll('.fade-in-up');
-            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -234,14 +416,75 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, {
-                rootMargin: '0px 0px -20px 0px' 
+            }, { rootMargin: '0px 0px -20px 0px' });
+
+            elements.forEach(element => observer.observe(element));
+
+            // 1. 根據上方的 portfolioData 自動生成作品卡片
+            const categoryColors = {
+                "密室逃脫": "text-cyan-400 bg-cyan-900/30 border-cyan-500/50",
+                "大型實境遊戲": "text-rose-400 bg-rose-900/30 border-rose-500/50",
+                "沉浸式劇場": "text-fuchsia-400 bg-fuchsia-900/30 border-fuchsia-500/50",
+                "實境解謎遊戲": "text-amber-400 bg-amber-900/30 border-amber-500/50",
+                "手機遊戲": "text-emerald-400 bg-emerald-900/30 border-emerald-500/50",
+                "解謎桌遊": "text-blue-400 bg-blue-900/30 border-blue-500/50"
+            };
+
+            const grid = document.getElementById('portfolio-grid');
+            
+            portfolioData.forEach(item => {
+                const colorClass = categoryColors[item.category] || "text-gray-400 bg-gray-800/50";
+                const card = document.createElement('div');
+                card.className = `portfolio-item p-4 flat-card flex flex-col justify-between hover:-translate-y-1 transition-transform`;
+                card.setAttribute('data-category', item.category);
+                card.innerHTML = `
+                    <div>
+                        <span class="inline-block px-2 py-0.5 rounded text-xs font-bold tracking-widest border mb-3 ${colorClass}">${item.category}</span>
+                        <h5 class="text-lg font-black text-white mb-2 drop-shadow-md leading-snug">${item.name}</h5>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">${item.desc}</p>
+                `;
+                grid.appendChild(card);
             });
 
-            elements.forEach(element => {
-                observer.observe(element);
+            // 2. 處理作品集分類篩選
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 移除所有按鈕的 active 樣式
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active', 'bg-purple-900/80', 'text-white');
+                        b.classList.add('hover:bg-purple-900/50');
+                    });
+                    
+                    // 加入點擊按鈕的 active 樣式
+                    btn.classList.add('active');
+                    btn.classList.remove('hover:bg-purple-900/50');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    // 篩選卡片，並加入重新播放的動畫效果，確保手機體驗流暢
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'flex';
+                            item.style.animation = 'none'; // 先重置動畫
+                            item.offsetHeight; // 觸發重繪 (reflow)
+                            item.style.animation = 'fadeIn 0.5s ease forwards'; // 重新執行漸現動畫
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
             });
         });
     </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
 </body>
 </html>
